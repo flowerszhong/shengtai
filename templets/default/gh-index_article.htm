@@ -8,41 +8,17 @@
 <link href="{dede:global.cfg_templets_skin/}/style/st-main.css" rel="stylesheet" media="screen" type="text/css" />
 </head>
 <body class="channel">
+<div class="body-wrap">
 {dede:include filename="head.htm"/}
 <!-- /header -->
 <div class="w960 center clear mt1">
- <div class="pleft">
-  <div class="listbox"> {dede:channelartlist}
-   <dl class="tbox light">
-    <dt class='light'><strong><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></strong><span class="more"><a href="{dede:field name='typeurl'/}">更多...</a></span></dt>
-    <dd class='light'>
-     <ul class="d1 ico3">
-      {dede:arclist titlelen='60' row='8'}
-      <li><span class="date">[field:pubdate function="MyDate('m-d',@me)"/]</span><a href="[field:arcurl /]">[field:title /]</a></li>
-      {/dede:arclist}
-     </ul>
-    </dd>
-   </dl>
-   {/dede:channelartlist} </div>
-  <!-- /listbox -->
- </div>
- <!-- /pleft -->
- <div class="pright">
-  <!-- <div class="commend">
-   <dl class="tbox light">
-    <dt class='light'><strong>推荐内容</strong></dt>
-    <dd class='light'>
-     <ul class="d4">
-      {dede:arclist flag='c' titlelen=42 row=6}
-      <li><a href="[field:arcurl/]">[field:title/]</a>
-       <p>[field:description function='cn_substr(@me,80)'/]...</p>
-      </li>
-      {/dede:arclist}
-     </ul>
-    </dd>
-   </dl>
-  </div> -->
-  <!-- /commend -->
+<div class="sidebar">
+  <ul class="sidebar-nav">
+    {dede:channelartlist}
+    <li><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></li>
+    {/dede:channelartlist} 
+  </ul>
+
   <div class="hot mt1">
    <dl class="tbox light">
     <dt class='light'><strong>热点内容</strong></dt>
@@ -55,8 +31,15 @@
     </dd>
    </dl>
   </div>
- </div>
- <!-- /pright -->
+</div>
+
+<div class="center-main">
+  <div class="place"> <strong>当前位置:</strong> {dede:field name='position'/} </div>
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
 </div>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmspath/}/images/js/j.js" ></script>
 {dede:include filename="footer.htm"/}

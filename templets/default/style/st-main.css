@@ -350,11 +350,16 @@ input,select,button{
 	vertical-align:middle;
 }
 
-/*  */
+/* slider-banner */
 .slide-banner{
 	height: 420px;
 	background: #808080;
 }
+
+
+
+
+
 
 
 
@@ -647,24 +652,41 @@ input,select,button{
     overflow:hidden;
 	zoom:1;
  }
-.sidebar{
-  float:right;
-  width:300px;
-  padding:20px 0 0 20px;
-  margin-right:20px;
-  border-left:1px solid #dadada;
-  word-wrap:break-word;
+
+
+
+/* center-main */
+.center-main{
+	float: left;
+	width:610px;
+	border: 1px solid red;
 }
-.sidebar h2{
-  font-size:14px;
-  line-height:25px;
- }
+
+
+
+ /* sidebar */
+.sidebar{
+  float:left;
+  width:215px;
+  margin-right:20px;
+  word-wrap:break-word;
+  color: #5F5F5F;
+}
+
+.sidebar a{
+	color: #5F5F5F;
+	line-height: 20px;
+}
 .sidebar  ul {
   padding:4px 8px;
  }
 .sidebar  ul li{
+	height: 25px;
+	margin-top: 2px;
+	padding: 5px 0px 5px 10px;
+	border-bottom: 1px solid #CACACA;
   line-height:24px;
-  background:url(../images/ico-3.gif) 4px 9px no-repeat;
+  background:url(../images/grade_10.gif) right center no-repeat;
  }
 .resultlist{
   overflow:hidden;

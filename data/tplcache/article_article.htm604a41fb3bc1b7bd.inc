@@ -32,14 +32,15 @@ $z[13][4]['name']="body";
 $z[14]=Array("channel","\r\n       <li><a href='[field:typeurl/]'>[field:typename/]</a></li>\r\n       ",2105,2316);
 $z[14][4]['type']="son";
 $z[14][4]['currentstyle']="<li><a href='~typelink~' class='thisclass'>~typename~</a></li>";
-$z[15]=Array("arclist","\r\n      <li><a href=\"[field:arcurl/]\">[field:title/]</a>\r\n       <p>[field:description function='cn_substr(@me,80)'/]...</p>\r\n      </li>\r\n      ",2536,2737);
-$z[15][4]['flag']="c";
-$z[15][4]['titlelen']="42";
-$z[15][4]['row']="6";
-$z[16]=Array("arclist","\r\n      <li><a href=\"[field:arcurl/]\">[field:title/]</a></li>\r\n      ",2971,3090);
-$z[16][4]['row']="10";
-$z[16][4]['orderby']="click";
-$z[17]=Array("include","",3173,3210);
-$z[17][4]['filename']="footer.htm";
+$z[15]=Array("type","[field:ID/]",2372,2406);
+$z[16]=Array("arclist","\r\n      <li><a href=\"[field:arcurl/]\">[field:title/]</a>\r\n       <p>[field:description function='cn_substr(@me,80)'/]...</p>\r\n      </li>\r\n      ",2579,2780);
+$z[16][4]['flag']="c";
+$z[16][4]['titlelen']="42";
+$z[16][4]['row']="6";
+$z[17]=Array("arclist","\r\n      <li><a href=\"[field:arcurl/]\">[field:title/]</a></li>\r\n      ",3014,3133);
+$z[17][4]['row']="10";
+$z[17][4]['orderby']="click";
+$z[18]=Array("include","",3216,3253);
+$z[18][4]['filename']="footer.htm";
 
 ?>
