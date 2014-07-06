@@ -1,0 +1,29 @@
+<?php
+//数据库连接信息
+$cfg_dbhost = 'localhost';
+// $cfg_dbname = 'ghdb';
+// $cfg_dbname = 'test';
+
+$cfg_dbhost = 'localhost';
+$cfg_dbname = 'stdb';
+$cfg_dbuser = 'root';
+$cfg_dbpwd = 'mzhong1986';
+$cfg_dbprefix = 'st_';
+$cfg_db_language = 'utf8';
+
+
+
+
+
+
+
+
+
+// $cfg_dbname = 'db_gonghui';
+// $cfg_dbuser = 'zyh';
+// $cfg_dbpwd = '123456';
+// $cfg_dbprefix = 'gh_';
+// $cfg_db_language = 'utf8';
+
+
+?>

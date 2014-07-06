@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>招聘PHP程序员3名底薪3000起 +奖金 （包吃住）_我的网站</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+	function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+	}
+	function checkSubmit(){
+		if(document.feedback.msg.value!='') document.feedback.submit();
+		else alert("评论内容不能为空！");
+	}
+
+	function postBadGood(ftype,fid)
+	{
+		var taget_obj = document.getElementById(ftype+fid);
+		var saveid = GetCookie('badgoodid');
+		if(saveid != null)
+		{
+			 var saveids = saveid.split(',');
+			 var hasid = false;
+			 saveid = '';
+			 j = 1;
+			 for(i=saveids.length-1;i>=0;i--)
+			 {
+			 	  if(saveids[i]==fid && hasid) continue;
+			 	  else {
+			 	  	if(saveids[i]==fid && !hasid) hasid = true;
+			 	  	saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+			 	  	j++;
+			 	  	if(j==10 && hasid) break;
+			 	  	if(j==9 && !hasid) break;
+			 	  }
+			 }
+	     if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+	     else saveid += ','+fid;
+			 SetCookie('badgoodid',saveid,1);
+		}
+		else
+		{
+			SetCookie('badgoodid',fid,1);
+		}
+		//document.write("feedback.php?action="+ftype+"&fid="+fid);
+		//return;
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+	  DedeXHTTP = null;
+	}
+-->
+</script>
+</head>
+<body class="infosview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	
+      	<li><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	<li class='hover'><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+	<div class="pleft">
+		<div class="place">
+			<strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/infos/'>分类信息</a> > 
+		</div><!-- /place -->
+		<div class="viewbox">
+			<div class="title">
+				<h2>招聘PHP程序员3名底薪3000起 +奖金 （包吃住）</h2>
+			</div><!-- /title -->
+			<div class="infolist">
+				<small>所属区域：</small><span></span>
+				<small>信息类型：</small><span>招聘</span>
+                <small>点击数：</small><span><script src="/gh/plus/count.php?view=yes&aid=104&mid=1&cid=-8" type='text/javascript' language="javascript"></script>次</span>
+				<small>发布时间：</small><span>10-04-07 16:12 </span>
+				<small>截止日期：</small><span>2010-04-07 16:04 </span>
+				<small>联系人：</small><span></span>
+				<small>联系电话：</small><span></span>
+				<small>电子邮箱：</small><span></span>
+				<small>地址：</small><span></span>
+			</div><!-- /info -->
+			<div class="picview">
+				<img src='/gh/images/defaultpic.gif' />
+			</div><!-- /info -->
+			<div class="labeltitle">
+				<strong>信息描述</strong>
+			</div>
+			<div class="content">
+            <div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+			　　<p><font size="5">招聘PHP程序员3名<br />
+1，要求有一年以上的PHP开发经验<br />
+2，能够熟悉利用dedecms系统进行二次开发。<br />
+3，熟悉DIV+CSS以及SEO优化<br />
+工作地点：上海普陀区 待遇3K起 +奖金 （包吃住）<br />
+有兴趣的请发简历到 journey24#163.com(#换成@)</font><br />
+&nbsp;</p>
+			</div>
+			<div class="boxoff">
+				<strong>------分隔线----------------------------</strong>
+			</div>
+			<div class="handle">
+				<div class="actbox">
+					<ul>
+						<li id="act-fav"><a href="/gh/plus/stow.php?aid=104" target="_blank">收藏</a></li>
+						<li id="act-err"><a href="/gh/plus/erraddsave.php?aid=104&title=招聘PHP程序员3名底薪3000起 +奖金 （包吃住）" target="_blank">挑错</a></li>
+						<li id="act-pus"><a href="/gh/plus/recommend.php?aid=104" target="_blank">推荐</a></li>
+						<li id="act-pnt"><a href="#" target="_blank" onClick="window.print();">打印</a></li>
+					</ul>
+				</div><!-- /actbox -->
+			</div><!-- /handle -->
+		</div><!-- /viewbox -->
+
+
+		<!-- //AJAX评论区 -->
+
+
+
+	</div><!-- /pleft -->
+
+	<div class="pright">
+        <div>
+          <dl class="tbox">
+				<dt><strong>栏目列表</strong></dt>
+				<dd>
+					<ul class="d6">
+                      
+					</ul>
+				</dd>
+			</dl>
+        </div>
+        <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+		<div class="infos_userinfo">
+ 			
+   	 </div>
+
+		<div class="hot mt1">
+			<dl class="tbox">
+				<dt><strong>最新信息</strong></dt>
+				<dd>
+					<ul class="c1 ico2">
+                     <li><a href="/gh/a/infos/2010/0407/105.html">佰邦达科技（北京）有限公司招聘PHP开发工程师</a></li>
+<li><a href="/gh/a/infos/2010/0407/104.html">招聘PHP程序员3名底薪3000起 +奖金 （包吃住）</a></li>
+<li><a href="/gh/a/infos/2010/0407/103.html">《每日商报》招聘PHP程序员、网页设计师</a></li>
+<li><a href="/gh/a/infos/2010/0407/102.html">尊米网诚聘全职PHP程序员（广州）</a></li>
+<li><a href="/gh/a/infos/2010/0407/101.html">4000每月 招聘dede二次开发程序一名</a></li>
+<li><a href="/gh/a/infos/2010/0407/100.html">吉林地区 礼聘 PHP程序员  网页设计师 系统运维工</a></li>
+<li><a href="/gh/a/infos/2010/0407/99.html">武汉地区招聘dedecms网页美工</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+		</div>
+        <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+	</div><!-- /pright -->
+
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+
+</body>
+</html>

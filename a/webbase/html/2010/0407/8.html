@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>介绍span和div标签的使用_我的网站</title>
+<meta name="keywords" content="介绍span和div标签的使用" />
+<meta name="description" content="鉴于HTML初级教程的目的只是教授HTML的骨架元素，这个中级教程增加一些骨肉，它们不应该特别的难，但可以进一步增进我们对HTML的理解，使我们能多做一些更有用的事情。HTML只是赋予内容的手段，大部分HTML标签都有其意义（标签p创建段落，h1标签创建标题等等" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/gh/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/webbase/'>网页基础</a> > <a href='/gh/a/webbase/html/'>HTML</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>介绍span和div标签的使用</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2010-04-07 09:29<small>来源:</small> <small>作者:</small> <small>点击:</small>
+   <script src="/gh/plus/count.php?view=yes&aid=8&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">鉴于HTML初级教程的目的只是教授HTML的骨架元素，这个中级教程增加一些骨肉，它们不应该特别的难，但可以进一步增进我们对HTML的理解，使我们能多做一些更有用的事情。HTML只是赋予内容的手段，大部分HTML标签都有其意义（标签p创建段落，h1标签创建标题等等</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      鉴于HTML初级教程的目的只是教授HTML的骨架元素，这个中级教程增加一些骨肉，它们不应该特别的难，但可以进一步增进我们对HTML的理解，使我们能多做一些更有用的事情。<br /><br />HTML只是赋予内容的手段，大部分HTML标签都有其意义（标签p创建段落，h1标签创建标题等等）的，然而span和div标签似乎没有任何内容上的意义，听起来就像一个泡沫做成的锤子一样无用。但实际上，与CSS结合起来后，它们被用得十分广泛。<br /><br />它们被用来组合一大块的HTML代码并赋予一定的信息，大部分用类属性class和标识属性id与元素联系起来，见CSS中级指南的类和id选择符。<br /><br />span和div的不同之处在于span是内联的，用在一小块的内联HTML中，而div（想想division是什么意思）元素是块级的（简单地说，它等同于其前后有断行），用于组合一大块的代码。<br /><br /><div&nbsp;id="scissors"><br /><p>This&nbsp;is&nbsp;<span&nbsp;class="paper">crazy</span></p><br /></div>&nbsp;<br />在实践中，div，特别是span不应该滥用，尽管有其他相左的意见。比如，你要强调单词“crazy”和加粗类“paper”，可能会用这样的代码：<br /><br /><div&nbsp;id="scissors"><br /><p>This&nbsp;is&nbsp;<strong&nbsp;class="paper">crazy</strong></p><br /></div>&nbsp;<br />这是做法比再加一个span比较好。<br /><br />对于类class和标识id没有线索？别担心，在CSS中级指南中会接触到它们。你所需要记住的是，span和div&nbsp;是“无意义”的标签。但有新的说法说他们是有语义的。我们这里不再深入了。
+            <p align="center"> </p>
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',8)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',8)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(8);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/gh/a/webbase/html/2010/0407/7.html'>对于初学者不错的XHTML教程</a> </li>
+     <li>下一篇：<a href='/gh/a/webbase/html/2010/0407/9.html'>HTML教程：建立超级连接</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/gh/plus/stow.php?aid=8" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/gh/plus/erraddsave.php?aid=8&title=介绍span和div标签的使用" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/gh/plus/recommend.php?aid=8" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ 
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      <li><a href='/gh/a/webbase/html/' class='thisclass'>HTML</a></li>
+      <li><a href='/gh/a/webbase/div-css/'>DIV&CSS</a></li>
+      
+      <li><a href='/gh/a/webbase/javascript-ajax/'>Javascript/Ajax</a></li>
+      
+      <li><a href='/gh/a/webbase/dreamweaver/'>Dreamweaver</a></li>
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a>
+       <p>HTML 4.0的新特性之一是使HTML事件触发浏览器中的行为，比方说当...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a>
+       <p>你认为已经知道怎么制做表格了吧。当然，你已经了解 table、...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/6.html">网页制作初学者：认识XHTML DHTML S</a>
+       <p>我们经常会在一个技术性网站或BBS见到这三个东东：XHTML DHTML ...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/7.html">对于初学者不错的XHTML教程</a>
+       <p>在这个教程里，你将学到HTML和XHTML之间的不同，以及如何将HTM...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/10.html">表格中单元格之间分隔线的隐藏方</a>
+       <p>隐藏分隔线的诀窍在于rules，察看这三个表格的源代码，我们可...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/18.html">浅谈XHTML（可扩展HTML）标准中CDAT</a>
+       <p>近来，随着XHTML（可扩展HTML）标准的出现，script/标签也经历了一...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/gh/a/webbase/html/2010/0407/92.html">DedeCMS V5.6 开发日志及新建</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/2.html">初学者：XHTML常用标签的基</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/4.html">初学者很好的参考：HTML标</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/5.html">实例学习网页制作中常用</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/6.html">网页制作初学者：认识X</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/7.html">对于初学者不错的XHTML教程</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/8.html">介绍span和div标签的使用</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/9.html">HTML教程：建立超级连接</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

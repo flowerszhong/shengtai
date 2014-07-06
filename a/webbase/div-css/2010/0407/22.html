@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>看看你是哪个等级的CSS开发人员_我的网站</title>
+<meta name="keywords" content="开发,人员,等级,哪个,看看,CSS," />
+<meta name="description" content="CSS? Isn" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/gh/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/webbase/'>网页基础</a> > <a href='/gh/a/webbase/div-css/'>DIV&CSS</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>看看你是哪个等级的CSS开发人员</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2010-04-07 09:32<small>来源:</small> <small>作者:</small> <small>点击:</small>
+   <script src="/gh/plus/count.php?view=yes&aid=22&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">CSS? Isn</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <p>CSS? Isn't that a multiplayer game?<br />
+第0级：CSS？那不是一个多人射击游戏吗？<br />
+有些人因为在找CS:S（Counter Strike: Source）这款游戏的资讯而进到#CSS网站。不必担心这些人，他们不可能制作太多网页，所以对网络也不会造成多大伤害。</p>
+<p>Yeah, I use it to remove underlines on links sometimes<br />
+第1级：是啊，我偶尔用它来移除连结的底线</p>
+<p>和第0级的人不同，这些人学过HTML，也制作过几个简单的网站。他们只有在无法使用HTML制作出某些效果时，才会使用CSS，例如移除连结的底线或者设定行高。这些人的网站通常规模不大也没什么访客，所以他们也不会对网络造成太大伤害。</p>
+<p>No, I don't like divs; tables are much easier to work with<br />
+第2级：不，我不喜欢div元素；表格好用多了</p>
+<p>他们听过使用div元素来设计网页这件事，也花了些时间学习CSS。不过他们很快就放弃了，觉得CSS太难而且支持度不佳，还是宁可用表格排版。<br />
+注意！他们是危险人物！他们在这个领域已经待了一段时间，许多都是网站部门的主管。和他们接触是很重要的，提倡网络标准的人应该多多开导他们，这对网络的意义非同小可。</p>
+<p>Yes I've heard it's good, but I can’t use it because of…<br />
+第3级：是啊，听说它挺好的，不过我没用它因为……</p>
+<p>这些人虽然知道CSS的优点，不过总是基于某些原因而无法使用它，例如他们可能有第2级的上司，或者他们必须考虑到Netscape 4的使用者。<br />
+旧 版的浏览器虽然不支持CSS，不过使用者还是可以看见完整的内容。而基于亲和力（accessibility）和易用性（usability）的好 处，CSS可以为网站带来更多访客。把这些优点告诉第3级的开发人员，即使他们不是决策者，或许多少能对第2级的上司发挥点影响力吧。</p>
+<p>CSS? Oh! Yes, I use divs for all my layouts<br />
+第4级：CSS？喔！没错，我用div元素来排版</p>
+<p>在 页面中使用过多的div元素反而是这群人的问题，他们会用#toprightredline或是#r5_c7（表示第5列第7栏）这样的方式设定div元 素的id。即使可以通过XHTML 1.1的验证，这种排版方式却无法发挥CSS的优势。荧幕朗读软体（screen readers，视障者使用的浏览器）很难解译这些网页，旧版浏览器也会有同样的问题，网页的内容无法完整显示。而不良的class与id命名方式，也对 于版面的修改造成极大不便。<br />
+虽然第4级的人制作的网站仍然很糟，不过由于他们很容易接受新的观念，因此对网络造成的伤害较小。许多所见即所得（WYSIWYG）的编辑器制作出充满div元素的原始码，可能也是误导这群人的原因。幸好这些编辑器已经逐渐改良了，希望这会有助于第4级的人继续往上提升。</p>
+<p>I use CSS for design, it's better than tables because of…<br />
+第5级：我用CSS来设计，这比表格好多了，因为……</p>
+<p>第5级的人知道CSS的优点并乐于使用，虽然有时会遇到些问题，但并不严重。他们也能运用长期的CSS工作经验，与人辩论为什么要将网页的结构与设计分开。我猜这篇文章大部分的读者是这一级的CSS开发人员，我想我自己也是。不过这还不是最好的……</p>
+<p>What version of CSS? Yes, I do. Did you read my book about…<br />
+第6级：哪个版本的CSS？是的，我知道啊。你有读过我的书关于……</p>
+<p>第 6级的人致力于改良CSS，并且写了许多很棒的文章介绍它的新用法。其中有些人将W3C关于CSS的说明文件全部读完了，并且知道哪些功能在哪个版本的浏 览器才有支持。他们是CSS初学者的典范，并且运用他们的影响力使网络更加进步。其中有许多人组成了Web Standards Project，如果你在他们的网站上面发现任何错误，那一定是有理由的，向他们请教之后你必能获得满意的解答。</p>
+
+            <p align="center"> </p>
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',22)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',22)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(22);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/gh/a/webbase/div-css/2010/0407/21.html'>5种方法立刻写出更好的CSS代码</a> </li>
+     <li>下一篇：<a href='/gh/a/webbase/div-css/2010/0407/23.html'>img图片元素下多余空白解决方案</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/gh/plus/stow.php?aid=22" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/gh/plus/erraddsave.php?aid=22&title=看看你是哪个等级的CSS开发人员" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/gh/plus/recommend.php?aid=22" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ 
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href='/gh/a/webbase/html/'>HTML</a></li>
+      <li><a href='/gh/a/webbase/div-css/' class='thisclass'>DIV&CSS</a></li>
+      <li><a href='/gh/a/webbase/javascript-ajax/'>Javascript/Ajax</a></li>
+      
+      <li><a href='/gh/a/webbase/dreamweaver/'>Dreamweaver</a></li>
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/gh/a/webbase/div-css/2010/0407/21.html">5种方法立刻写出更好的</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/22.html">看看你是哪个等级的CSS开</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/23.html">img图片元素下多余空白解</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/24.html">30个基于CSS的导航和按钮优</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/25.html">精选30个优秀的CSS技术和实</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/26.html">CSS 中的黄金分割率</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/27.html">用CSS设计你的搜索框</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/28.html">为今后的项目制作空白C</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/29.html">简洁纯净的CSS表单设计实</a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/30.html">精选15个国外CSS框架</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

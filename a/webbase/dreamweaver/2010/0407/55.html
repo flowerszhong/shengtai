@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用 Dreamweaver 8 搞定web标准_我的网站</title>
+<meta name="keywords" content="用,Dreamweaver,8,搞定web标准" />
+<meta name="description" content="如果您正在读这篇文章，您很可能是已经对 Web 标准有了一定的兴趣，并且对用 DW ( Dreamweaver 的简称)来构建的站点中标准的应用非常好奇。" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/gh/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/webbase/'>网页基础</a> > <a href='/gh/a/webbase/dreamweaver/'>Dreamweaver</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>用 Dreamweaver 8 搞定web标准</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2010-04-07 09:39<small>来源:</small> <small>作者:</small> <small>点击:</small>
+   <script src="/gh/plus/count.php?view=yes&aid=55&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">如果您正在读这篇文章，您很可能是已经对 Web 标准有了一定的兴趣，并且对用 DW ( Dreamweaver 的简称)来构建的站点中标准的应用非常好奇。</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <p>&nbsp;　　译者序:这个系列原文一共8篇文章，从普及 Web Standards 入手，讲述如何用 Dreamweaver 8 来构建符合标准的 Web ，由于原作者的此篇文章是对《Build Your Own Standards Compliant Website Using Dreamweaver 8 》(这篇文章是收费的)的摘录，所以我对内容进行了适当的删改，顺序与原文是一致的，但篇幅会有调整，特此告知。翻译水平有限，敬请谅解。 </p><p>　　如果您正在读这篇文章，您很可能是已经对 Web 标准有了一定的兴趣，并且对用 DW ( Dreamweaver 的简称)来构建的站点中标准的应用非常好奇。 </p><p>　　或许您已经对 WS (Web Standards的简称)有了一定的了解，但是您并不知道如何用 DW 来编写可兼容的代码。或者您是一个 DW 用户，您很想遵从 WS ，更广泛的使用 CSS ，并且可以制作出更有亲和力的文档。无论您是哪一种类型，这篇文章都会给您想要的答案:告诉您如何用 DW 来搞定 WS。 </p><p>　　Web 标准的定义 </p><p>　　就我们在整篇文章所关心的 WS 来说，让我们首先花一点时间来明确一下我们究竟在谈论些什么: </p><p>　　WS 是一些指导 Web 开发语言的规范，是由 W3C 所制定的。这些规范包含了多种语言，例如，HTML、XHTML 和 CSS 还有一些其他的相关语言，例如 MathML，用来表示数学中的方程，当你有这种特殊的需要的时候，或许会用得上。W3C 也颁布了“Web 内容亲和力指南”(Web Content Accessibility Guidelines —— WCAG)——推广网页的可访问性(通过 WAI ) </p><p>　　提示:直接获取这些规范 </p><p>　　你可以在 W3C 的网站上阅读这些规范，尽管他们有时读起来还是有些困难的: </p><p>　　HTML 4.01 </p><p>　　XHTML 1.0 </p><p>　　CSS 1 </p><p>　　CSS 2.1 </p><p>　　WCAG 1.0 </p><p>　　在本文中，我们将会用到 XHTML1.0、CSS1 和 2.1、WCAG 1.0 等规范和建议，但是你一定很高兴知道我们其实不必过多的阅读 W3C 文档。 </p><p>　　谁需要 WS ? </p><p>　　您可能只有一个含糊的概念:WS 是个好东西，但是许多网站——包括许多知名的站点——并不遵从 WS ，并且他们看起来的确管理得很好。所以，为什么我们要尽力去遵从 WS 呢?这么做会有什么真正的收益吗?谁需要 WS ?谁需要去关注 W3C 的规范与建议? </p><p>　　Web 开发者与设计者 </p><p>　　需要关注 WS 的首类人群就是我们:网站建设的开发者与设计者。花费时间去学习如何用 WS 开发对于我们来说值得吗? </p><p>　　整洁的标记使 BUG 的修复速度加快。 </p><p>　　如果您通过 W3C 校验您的页面，至少您会了解到不规范的标记并不是引起您曾经遇到过的错误的原因。有时，校验一个页面和修复已发现错误的过程，可以清除显示中遇到一些问题，这些问题是由标记(element)没有结束或标签(tag)拼写错误引起的。 </p><p>　　即使校验您的文档并没有修正这些问题，至少你会知道这些问题存在于规范的文档中。既然你已经知道这个问题不是一个错误，那么你可以开始关注其他的问题了，例如在不同的浏览器中 CSS 处理差异问题。 </p><p>　　遵从可访问性的需求很容易 </p><p>　　如果你编写一个规范的 XHTML 标记，那么你就可以保证文档在语义上是无误的，并且您可以把文档中的内容与表现相分离，您将可以把大量的工作放在许多 WCAG1.0 中所列的可访问性的问题上。认识到可访问性并不是仅仅为残疾人设计的这一点也很重要。一个亲和力好的站点是可以被许多不同的设备访问的，例如移动电话和 PDA ，他们是不具备强大的处理能力去对付那些散乱而非标准的标记的。 </p><p>
+            <p align="center"> </p>
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',55)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',55)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(55);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/gh/a/webbase/dreamweaver/2010/0407/54.html'>使用Dreamweaver批量做web网页</a> </li>
+     <li>下一篇：<a href='/gh/a/webbase/dreamweaver/2010/0407/56.html'>Dreamweaver cs3 彩蛋</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/gh/plus/stow.php?aid=55" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/gh/plus/erraddsave.php?aid=55&title=用 Dreamweaver 8 搞定web标准" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/gh/plus/recommend.php?aid=55" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ 
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href='/gh/a/webbase/html/'>HTML</a></li>
+      
+      <li><a href='/gh/a/webbase/div-css/'>DIV&CSS</a></li>
+      
+      <li><a href='/gh/a/webbase/javascript-ajax/'>Javascript/Ajax</a></li>
+      <li><a href='/gh/a/webbase/dreamweaver/' class='thisclass'>Dreamweaver</a></li>
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦大家庭新</a>
+       <p>2010年，新一年，新征程……
+织梦大家庭招募能够共同创业的新...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/54.html">使用Dreamweaver批量做web网页</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/55.html">用 Dreamweaver 8 搞定web标准</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/56.html">Dreamweaver cs3 彩蛋</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/57.html">插入的Flash添加透明或其他</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/58.html">Dreamweaver8轻松实现文本的</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/59.html">Dreamweaver基础教程：层及其</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/60.html">Dreamweaver中加入竖直线的问</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/61.html">Dreamweaver CS3新功能</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/62.html">在Dreamweaver8.0.2中为插入的</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

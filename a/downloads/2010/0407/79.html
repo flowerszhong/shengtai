@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DedeCMS V5.5正式版正式发布(Build-0912)_我的网站</title>
+<meta name="keywords" content="发布,Build-0912,正式,正式版,V5.5,Dede" />
+<meta name="description" content="DedeCMS V5.5增强或修正功能列表 一、已经修正的BUG： 1、添加后台系统管理员账号，无法删除会员列表的账号； 2、这篇文档需要注册会员才能访问，你目前是：注册会员(提示文字不正确)； 3、高级搜索选择发布时间，搜索出错； 4、会员中心发布完内容后点击继" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin()
+{
+	var taget_obj = document.getElementById('_ajax_feedback');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/member/ajax_feedback.php");
+	DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+	DedeXHTTP = null;
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/gh/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+	DedeXHTTP = null;
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="downlist">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	
+      	<li><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	<li class='hover'><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+
+<div class="w960 center clear mt1">
+	<div class="pleft">
+		<div class="place">
+			<strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/downloads/'>软件下载</a> > 
+		</div><!-- /place -->
+		<div class="viewbox">
+			<div class="title">
+				<h2>DedeCMS V5.5正式版正式发布(Build-0912)</h2>
+			</div><!-- /title -->
+			<div class="infolist">
+				<small>软件类型：</small><span>国产软件</span>
+				<small>授权方式：</small><span>开源软件</span>
+				<small>界面语言：</small><span>简体中文</span>
+				<small>软件大小：</small><span>4.2 MB</span>
+				<small>文件类型：</small><span>.gz</span>
+				<small>运行环境：</small><span>Win2003,WinXP,Win2000,Win9X</span>
+				<small>软件等级：</small><span>★★★★★</span>
+				<small>发布时间：</small><span>2010-04-07</span>
+				<small>官方网址：</small><span>http://www.dedecms.com</span>
+        <small>演示网址：</small><span>http://www.dedecms.com</span>
+        <small>下载次数：</small><span><script src="/gh/plus/disdls.php?aid=79" language="javascript"></script></span>
+			</div><!-- /info -->
+			<div class="picview">
+				<img src='http://www.dedecms.com/demoimg/uploads/allimg/100407/1_040G04A962P.jpg' />
+			</div><!-- /info -->
+			<div class="labeltitle">
+				<strong>软件介绍</strong>
+			</div>
+			<div class="content"><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+				<p><strong>DedeCMS V5.5增强或修正功能列表<br />
+<br />
+</strong>一、已经修正的BUG：<br />
+1、添加后台系统管理员账号，无法删除会员列表的账号；<br />
+2、这篇文档需要注册会员才能访问，你目前是：注册会员(提示文字不正确)；<br />
+3、高级搜索选择发布时间，搜索出错；<br />
+4、会员中心发布完内容后点击“继续发布文章”，HTML文本框没有了（表单的action不对）；<br />
+5、后台发布文章，如果勾选“跳转”，输入网址后，如果再编辑这个内容，发现没有读取以前保存的；<br />
+6、选择裁剪图片的提示和步骤没说明清楚，导致操作混乱；<br />
+7、修正文档批量移动将内容移动至回收站可能丢失文档的Bug；<br />
+8、自定义表单上传附件无效；<br />
+9、如果头衔超过10个的话，好像id为1的头衔和id为10的就重复了！；<br />
+10、include/taglib/ask.lib.php文件的第22行 if($tid>0) $tid = " (tid=$tid Or $tid2='$tid')的有误；<br />
+11、会员注册是邮箱有下划线的话总是通不过验证；<br />
+12、系统后台禁用某些模型的投稿功能，前台会员中心还是可以显示投稿相关的选项；（在升级会员中心时处理）<br />
+13、DEDE 搜索功能不准确（词库没有的词或被拆开的中文字不会做搜索导致的）;<br />
+14、投票系统的VOTE.PHP程序中没有对投票时未选择选项做程序处理！<br />
+15、未审核的文章出现的会员空间，导致非法信息的出现。(此功能并非BUG，原本功能就如此设计，不过会考虑增加一个参数由管理员决定是否允许)<br />
+16、默认水印背景黑色让透明的gif很难看！<br />
+17、新建专题，简略标题填写后，编辑专题时又是空的；<br />
+18、注册会员，没有同意协议，也可以注册；<br />
+<br />
+二、升级功能<br />
+<br />
+(一)、人性化功能：<br />
+1、 允许许用户选择栏目链接为不带默认页的类型，即是 typedir/ 模式；<br />
+2、 使文章分页时支持标题带页码符，并且每页摘要不同；<br />
+3、 升级搜索程序，如果关键字中含有栏目名称，则搜索这个栏目的内容，如果有多关键字组合时，允许搜索单个字符；<br />
+<br />
+(二)、会员相关：<br />
+1、升级会员系统，修正用户禁言、审核等存在的问题；<br />
+2、升级会员系统，对后台设置了关闭图集选项之后不再显示图集菜单；<br />
+3、允许会员空间中“所有文档”可以由用户设定具体频道；<br />
+4、会员自定义分类支持按模型划分；<br />
+5、会员头像、企业形象照增加删除功能；<br />
+6、对会员中心的细节进行适当调整；<br />
+7、修正会员中心消费信息管理混乱问题；<br />
+8、增加积分兑换金币功能；<br />
+9、更改后台会员管理功能，使其更人性化；<br />
+10、修正会员等级设置（5.3的概念过于混乱，恢复为5.1模式）；<br />
+11、允许自由设置用户笔名是否可以同名；<br />
+<br />
+(三)、后台操作：<br />
+1、 升级管理员权限系统，允许指定管理员管理多个栏目；<br />
+2、修正删除与移动栏目没更新缓存的错误；<br />
+3、修正删除或更新关键字后没返回原页面的错误；<br />
+4、优化用户搜索关键字管理功能；<br />
+5、发布文章时可以在预设的模板中随机获得一个模板（5.1的随机模板功能增强版）；<br />
+6、增加可选的实时生成html功能；<br />
+7、文档自定义属性允许自定义排序；<br />
+8、优化文章模块图片附件上传功能；<br />
+9、增加网站编辑绩效统计功能（管理员发布员发了多少文章，今天发了多少文章，昨天发了多少文章，一个月发了多少文章）；<br />
+10、增加全站评论开关选项；<br />
+11、发布文章时可以或上传图片时允许单独选择图片是否使用水印；<br />
+12、优化来源、作者、颜色选择框及相关管理；<br />
+13、专题升级为可以不与栏目关连；<br />
+14、管理员审核后保留责任编辑；<br />
+15、修正专题节点问题；<br />
+16、增加用AJAX载入的栏目辅助选择器，解决栏目过多时，用下拉框操作不便的问题；<br />
+17、增加快速属性编辑功能，用AJAX载入窗体编辑文章的基本信息；<br />
+18、增加批量删除、增加某属性的功能（AJAX窗体）；<br />
+19、增加栏目合并功能；<br />
+□20、升级关键字管理功能，保留并升级关键字提取功能，使用新的站内关键字链接管理功能；<br />
+<br />
+(四)、模块插件<br />
+1、升级留言本系统，增加支持回复、支持限定仅允许会员发表等选项；<br />
+2、可以指定自由列表最大显示页数，以防止显示网站所有内容；<br />
+3、wap功能完善与加强；<br />
+<br />
+(五)、其它功能<br />
+1、重新设置主要数据表的索引，使之针对大多数网站都处于最佳性能。<br />
+2、增加计划任务功能（每个任务单独对应该一个程序，可以通过客户端软件或用户浏览动态页面时触发）；<br />
+3、field支持用array获取任意字段的值；(支持标记：文章列表模板的 {dede:field name='array' /}、arclist、arclistsg、loop、sql 标签)<br />
+4、编辑器升级至 FCK2.6(支持：谷歌浏览器)；<br />
+5、在数据库类直接控制MySQL超时时间；<br />
+6、发布文章时可以或上传图片时允许单独选择图片是否使用水印；7、给分页的文章设置不同的标题和摘要（标题加1、2等数字）；<br />
+7、允许使用直接跳转网址（需修改数据结构，为了升级时更稳定，改为不显示任何内容直接跳转形式，但并不是直接使用这个网址）；<br />
+8、更改前台默认模板为淡蓝风格；<br />
+9、js广告静态化（可以用缓存方式替代）；<br />
+12、增加前台导航菜单默认调用二级子类的功能；<br />
+<br />
+7月20日后更改或增强的功能<br />
+<br />
+1、图集、软件模型人性化调整；<br />
+&nbsp;&nbsp;(1) 图集整合swfupload上传；<br />
+&nbsp;&nbsp;(2) 图集、文档相关附件关连更完善，删除文档同时删除附件功能更完善；<br />
+&nbsp;&nbsp;(3) 软件频道调整软件权限问题，默认不使用通用模型的权限，而是使用单独权限，因此，不管是否需要权限的软件，都会生成静态，而在下载时扣金币或要求会员等级；<br />
+&nbsp;&nbsp;(4) 软件镜像地址，除了保留原功能外，增加了仅把镜像作为可选地址前缀功能，方便有些要的用户自由填写软件地址信息；<br />
+2、文档允许选择多个副栏目；<br />
+3、增加AJAX评论功能；<br />
+4、增加邮件验证注册功能；(需要设置中把“会员设置--会员使用权限开通状态”选项改为 -10)；<br />
+5、增加栏目树调用标签(在前台调用所有栏目)；<br />
+6、升级缩略图上传和裁剪功能，使之更人性化；<br />
+7、升级个人空间（更换模板、细节调整）；<br />
+8、调整后台主页和登录界面；<br />
+9、修正的BUG：<br />
+&nbsp;&nbsp;(1) 修正会员中心阅读消息，好友列表显示错误；<br />
+&nbsp;&nbsp;(2) 修正导航菜单在下载频道存在错误；<br />
+&nbsp;&nbsp;(3) 修正责任编辑调用不显示问题；<br />
+&nbsp;&nbsp;(4) 修正自由列表的死链接；<br />
+&nbsp;&nbsp;(5) 修正前台投稿存在的一些问题；<br />
+&nbsp;&nbsp;(6) 修正文章推荐不能使用数字域名邮箱问题；<br />
+&nbsp;&nbsp;(7) 处理TAG标签默认不按时间排序问题；<br />
+&nbsp;&nbsp;(8) 去除FCK编辑器上传图片产生的多余代码，让用户自己选择是否加相应的东西。</p>
+			</div>
+			<div class="labeltitle">
+				<strong>下载地址</strong>
+			</div>
+			<div class="content">
+				<ul class="downurllist">
+                	<li><a href="/gh/plus/download.php?open=2&id=79&uhash=4da9d488ce62ae2e79675263" target="_blank">V55-GBK版安装程序</a></li><li><a href="/gh/plus/download.php?open=2&id=79&uhash=25ec220cbe13b56b564de31c" target="_blank">V55-UTF8版安装程序</a></li><li><a href="/gh/plus/download.php?open=2&id=79&uhash=53840b7c61af3fdebb79b982" target="_blank">V5.3.1到V5.5GBK升级程序</a></li><li><a href="/gh/plus/download.php?open=2&id=79&uhash=f7b5b83ccd99e8825ff1190c" target="_blank">V5.3.1到V5.5UTF8升级程序</a></li><li><a href="/gh/plus/download.php?open=2&id=79&uhash=74fa3f06c5bf39342c275053" target="_blank">DedeCMS V5.5GBK + HDwiki V4.05 互动百科整合安装包</a></li><li><a href="/gh/plus/download.php?open=2&id=79&uhash=fd1bb91b9db157a2ba635387" target="_blank">DedeCMS V5.5UTF8 + HDwiki V4.05 互动百科整合安装包</a></li>
+                </ul>
+			</div>
+			<div class="labeltitle">
+				<strong>下载说明</strong>
+			</div>
+			<div class="intro">
+				<p>?推荐使用第三方专业下载工具下载本站软件，使用 WinRAR v3.10 以上版本解压本站软件。<br />	
+?如果这个软件总是不能下载的请点击报告错误,谢谢合作!!<br />	
+?下载本站资源，如果服务器暂不能下载请过一段时间重试！<br />	
+?如果遇到什么问题，请到本站论坛去咨寻，我们将在那里提供更多 、更好的资源！<br />	
+?本站提供的一些商业软件是供学习研究之用，如用于商业用途，请购买正版。</p>
+			</div>
+			<div class="newdigg" id="newdigg">
+				<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',79)">
+					<div class="digg_act">顶一下</div>
+					<div class="digg_num">(0)</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:0%"></span></div>
+						<div class="digg_percent_num">0%</div>
+					</div>
+				</div>
+				<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',79)">
+					<div class="digg_act">踩一下</div>
+					<div class="digg_num">(0)</div>
+					<div class="digg_percent">
+						<div class="digg_percent_bar"><span style="width:0%"></span></div>
+						<div class="digg_percent_num">0%</div>
+					</div>
+				</div>
+			</div>
+			 <script language="javascript" type="text/javascript">getDigg(79);</script>
+			<div class="boxoff">
+				<strong>------分隔线----------------------------</strong>
+			</div>
+			<div class="handle">
+				<div class="context">
+					<ul>
+						<li>上一篇：<a href='/gh/a/downloads/2010/0407/78.html'>DedeCMS V5.3.1正式版免费下载</a> </li>
+						<li>下一篇：<a href='/gh/a/downloads/2010/0407/80.html'>DedeAMPZ-PHP环境整合套件</a> </li>
+					</ul>
+				</div><!-- /context -->
+				<div class="actbox">
+					<ul>
+						<li id="act-fav"><a href="/gh/plus/stow.php?aid=79" target="_blank">收藏</a></li>
+						<li id="act-err"><a href="/gh/plus/erraddsave.php?aid=79&title=DedeCMS V5.5正式版正式发布(Build-0912)" target="_blank">挑错</a></li>
+						<li id="act-pus"><a href="/gh/plus/recommend.php?aid=79" target="_blank">推荐</a></li>
+						<li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+					</ul>
+				</div><!-- /actbox -->
+			</div><!-- /handle -->
+		</div><!-- /viewbox -->
+
+<!-- //AJAX评论区 -->
+
+
+	
+	</div><!-- /pleft -->
+
+	<div class="pright">
+        <div>
+          <dl class="tbox">
+				<dt><strong>栏目列表</strong></dt>
+				<dd>
+					<ul class="d6">
+                      
+					</ul>
+				</dd>
+			</dl>
+        </div>
+		<div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+        	<div class="infos_userinfo">
+ 			
+   	 	</div>
+
+		<div class="downrange mt1">
+			<dl class="tbox">
+				<dt><strong>推荐软件</strong></dt>
+				<dd>
+					<ul class="f1">
+                    <li>
+							<a href="/gh/a/downloads/2010/0407/76.html">DedeCms V5.1（GBK/UTF8）版</a>
+							<span><small>好评:</small>0</span>
+							<span><small>人气:</small>56</span>
+						</li>
+<li>
+							<a href="/gh/a/downloads/2010/0407/74.html">DedeCms OX V4.0版下载</a>
+							<span><small>好评:</small>0</span>
+							<span><small>人气:</small>194</span>
+						</li>
+
+					</ul>
+				</dd>
+			</dl>
+		</div><!-- /downrange -->
+
+		<div class="hot mt1">
+			<dl class="tbox">
+				<dt><strong>热门软件</strong></dt>
+				<dd>
+					<ul class="c1 ico2">
+                    <li><a href="/gh/a/downloads/2010/0407/74.html">DedeCms OX V4.0版下载</a></li>
+<li><a href="/gh/a/downloads/2010/0407/73.html">DedeCms V3.1 正式版下载</a></li>
+<li><a href="/gh/a/downloads/2010/0407/79.html">DedeCMS V5.5正式版正式发布</a></li>
+<li><a href="/gh/a/downloads/2010/0407/75.html">DeDeCms V5 正式版发布</a></li>
+<li><a href="/gh/a/downloads/2010/0407/78.html">DedeCMS V5.3.1正式版免费下载</a></li>
+<li><a href="/gh/a/downloads/2010/0407/77.html">DedeCmsV5.1FreeSP1正式版发布</a></li>
+<li><a href="/gh/a/downloads/2010/0407/80.html">DedeAMPZ-PHP环境整合套件</a></li>
+<li><a href="/gh/a/downloads/2010/0407/76.html">DedeCms V5.1（GBK/UTF8）版</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+		</div>
+        <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+	</div><!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+<script src="/gh/plus/count.php?aid=79&mid=1" language="javascript"></script>
+</body>
+</html>

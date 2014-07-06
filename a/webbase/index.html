@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网页基础_我的网站</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+</head>
+<body class="channel">
+<!-- <div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div> -->
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innertopbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innertopbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+ <div class="pleft">
+  <div class="flashnews">
+   <script language='javascript'>
+linkarr = new Array();
+picarr = new Array();
+textarr = new Array();
+var swf_width=280;
+var swf_height=192;
+var files = "";
+var links = "";
+var texts = "";
+//这里设置调用标记
+linkarr[1] = "/gh/a/webbase/dreamweaver/2010/0407/59.html";
+picarr[1]  = "http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F60433360W0-19232_lit.jpg";
+textarr[1] = "Dreamweaver基础教程：层及其";
+
+for(i=1;i<picarr.length;i++){
+  if(files=="") files = picarr[i];
+  else files += "|"+picarr[i];
+}
+for(i=1;i<linkarr.length;i++){
+  if(links=="") links = linkarr[i];
+  else links += "|"+linkarr[i];
+}
+for(i=1;i<textarr.length;i++){
+  if(texts=="") texts = textarr[i];
+  else texts += "|"+textarr[i];
+}
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+document.write('<param name="movie" value="/gh/templets/default/images/bcastr3.swf"><param name="quality" value="high">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');
+document.write('<embed src="/gh/templets/default/images/bcastr3.swf" wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); document.write('</object>');
+</script>
+  </div>
+  <!-- /flashnews -->
+  <div class="topcommand">
+   <dl class="tbox">
+    <dt><strong>频道头条</strong></dt>
+    <dd>
+     <div class="onenews"> <h2><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦</a></h2>
+      <p>2010年，新一年，新征程……
+织梦大家庭招募能够共同创业的新伙伴。
+首要特点：织...<a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">[查看全文]</a></p>
+ </div>
+     <!-- /onenews -->
+     <ul class="c2 ico1">
+      <li><a href="/gh/a/webbase/javascript-ajax/2010/0407/39.html">Web2.0十大Ajax安全漏洞以及</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/42.html">JavaScript基础知识总结</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/43.html">JavaScript的9个陷阱及评点</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/52.html">完全了解AJAX</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /topcommand -->
+  <div class="picnews mt1">
+   <dl class="tbox">
+    <dt><strong>图文资讯</strong></dt>
+    <dd>
+     <ul class="e1">
+      <li><a href="/gh/a/webbase/dreamweaver/2010/0407/59.html"><img src='http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F60433360W0-19232_lit.jpg' border='0' width='124' height='94' alt='Dreamweaver基础教程：层及其应用'><span class="title">Dreamweaver基础教程：层及其</span></a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0407/60.html"><img src='http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F60433540F-32J3_lit.jpg' border='0' width='124' height='94' alt='Dreamweaver中加入竖直线的问题'><span class="title">Dreamweaver中加入竖直线的问</span></a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/24.html"><img src='http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F603910L60-12363_lit.jpg' border='0' width='124' height='94' alt='30个基于CSS的导航和按钮优秀设计教程'><span class="title">30个基于CSS的导航和按钮优</span></a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/25.html"><img src='http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F60392Q4550-321013_lit.gif' border='0' width='124' height='94' alt='精选30个优秀的CSS技术和实例'><span class="title">精选30个优秀的CSS技术和实</span></a></li>
+<li><a href="/gh/a/webbase/div-css/2010/0407/26.html"><img src='http://www.dedecms.com/demoimg/uploads/allimg/c100407/12F603930W50-12401_lit.png' border='0' width='124' height='94' alt='CSS 中的黄金分割率'><span class="title">CSS 中的黄金分割率</span></a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /picnews -->
+  <div id="leftAD1" style="margin:10px auto"><img src="/ad1.jpg" /></div>
+  <div class="listbox"> <dl class="tbox">
+    <dt><strong><a href="/gh/a/webbase/html/">HTML</a></strong><span class="more"><a href="/gh/a/webbase/html/">更多...</a></span></dt>
+    <dd>
+     <ul class="d1 ico3">
+      <li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/92.html">DedeCMS V5.6 开发日志及新建议提交贴</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/2.html">初学者：XHTML常用标签的基本应用指南</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/4.html">初学者很好的参考：HTML标签详尽讲解</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/5.html">实例学习网页制作中常用的网页表单的应用</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/6.html">网页制作初学者：认识XHTML DHTML SHTML的区别</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/html/2010/0407/7.html">对于初学者不错的XHTML教程</a></li>
+
+     </ul>
+    </dd>
+   </dl><dl class="tbox">
+    <dt><strong><a href="/gh/a/webbase/div-css/">DIV&CSS</a></strong><span class="more"><a href="/gh/a/webbase/div-css/">更多...</a></span></dt>
+    <dd>
+     <ul class="d1 ico3">
+      <li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/21.html">5种方法立刻写出更好的CSS代码</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/22.html">看看你是哪个等级的CSS开发人员</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/23.html">img图片元素下多余空白解决方案</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/24.html">30个基于CSS的导航和按钮优秀设计教程</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/25.html">精选30个优秀的CSS技术和实例</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/26.html">CSS 中的黄金分割率</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/27.html">用CSS设计你的搜索框</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/div-css/2010/0407/28.html">为今后的项目制作空白CSS模板文件</a></li>
+
+     </ul>
+    </dd>
+   </dl><dl class="tbox">
+    <dt><strong><a href="/gh/a/webbase/javascript-ajax/">Javascript/Ajax</a></strong><span class="more"><a href="/gh/a/webbase/javascript-ajax/">更多...</a></span></dt>
+    <dd>
+     <ul class="d1 ico3">
+      <li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/34.html">JavaScript风格要素</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/35.html">用JavaScript的日期对象操控时间和日期值</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/36.html">减轻JavaScript测试和调试负担</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/37.html">使用AJAX技术的十大理由</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/38.html">Ajax 技术入门简介</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/39.html">Web2.0十大Ajax安全漏洞以及成因</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/40.html">JavaScript开发时的五个小提示</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/javascript-ajax/2010/0407/41.html">JavaScript：世界上误解最深的语言</a></li>
+
+     </ul>
+    </dd>
+   </dl><dl class="tbox">
+    <dt><strong><a href="/gh/a/webbase/dreamweaver/">Dreamweaver</a></strong><span class="more"><a href="/gh/a/webbase/dreamweaver/">更多...</a></span></dt>
+    <dd>
+     <ul class="d1 ico3">
+      <li><span class="date">04-08</span><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦大家庭新年招募第一波</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/68.html">使用Dreamweaver来详细了解CSS的多样性</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/69.html">用Dreamweaver合理为为网页进行优化</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/70.html">Dreamweaver方便快捷编辑网页标签</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/71.html">Dreamweaver8创建自定义代码片段的方法</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/72.html">在Dreamweaver中为插入的Flash添加透明</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/54.html">使用Dreamweaver批量做web网页</a></li>
+<li><span class="date">04-07</span><a href="/gh/a/webbase/dreamweaver/2010/0407/55.html">用 Dreamweaver 8 搞定web标准</a></li>
+
+     </ul>
+    </dd>
+   </dl> </div>
+  <!-- /listbox -->
+ </div>
+ <!-- /pleft -->
+ <div class="pright">
+  <div class="commend">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦大家庭新</a>
+       <p>2010年，新一年，新征程……
+织梦大家庭招募能够共同创业的新...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/35.html">用JavaScript的日期对象操控时间和日</a>
+       <p>软件开发中一个比较棘手的内容是使用时间和日期值；似乎每种...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/43.html">JavaScript的9个陷阱及评点</a>
+       <p>来自Nine Javascript Gotchas, 以下是JavaScript容易犯错的九个陷阱。虽...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/52.html">完全了解AJAX</a>
+       <p>尽管AJAX是个相对新生的术语，但其背后的技术却并不新颖。我们...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a>
+       <p>HTML 4.0的新特性之一是使HTML事件触发浏览器中的行为，比方说当...</p>
+      </li>
+<li><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a>
+       <p>你认为已经知道怎么制做表格了吧。当然，你已经了解 table、...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div id="conrightAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=listrtpicad&charset=gbk"></script></div>
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/gh/a/webbase/html/2010/0407/92.html">DedeCMS V5.6 开发日志及新建</a></li>
+<li><a href="/gh/a/webbase/dreamweaver/2010/0408/106.html">{dede:招聘启事 标题='织梦</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/39.html">Web2.0十大Ajax安全漏洞以及</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/1.html">学习HTML 4.0事件属性</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/2.html">初学者：XHTML常用标签的基</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/3.html">网页中应用表格爱好者</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/4.html">初学者很好的参考：HTML标</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/5.html">实例学习网页制作中常用</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/6.html">网页制作初学者：认识X</a></li>
+<li><a href="/gh/a/webbase/html/2010/0407/7.html">对于初学者不错的XHTML教程</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="listRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=listrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="footAD" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

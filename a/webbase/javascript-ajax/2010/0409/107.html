@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PHP正则表达式的几则使用技巧_我的网站</title>
+<meta name="keywords" content="PHP,正则,表达式,的,几则,使用技巧,PHP,正则," />
+<meta name="description" content="PHP正则表达式主要用于字符串的模式分割、匹配、查找及替换操作。使用正则表达式在某些简单的环境下可能效率不高，因此如何更好的使用PHP正则表达式需要综合考虑。 我的PHP正则入门，是" />
+<link href="/gh/templets/default/style/gh-main.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/gh/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/gh/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/gh/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/gh/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/gh/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/gh/data/sitemap.html" target="_blank">网站地图</a>|<a href="/gh/tags.php">TAG标签</a><a href="/gh/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://localhost','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://localhost"><img src="/gh/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/gh/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/gh/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/gh/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/gh/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/gh/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/gh/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/gh/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/gh/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/gh/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/gh/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://localhost/gh'>主页</a> > <a href='/gh/a/webbase/'>网页基础</a> > <a href='/gh/a/webbase/javascript-ajax/'>Javascript/Ajax</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>PHP正则表达式的几则使用技巧</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2014-06-03 23:13<small>来源:</small> <small>作者:</small>like <small>点击:</small>
+   <script src="/gh/plus/count.php?view=yes&aid=107&mid=4" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">PHP正则表达式主要用于字符串的模式分割、匹配、查找及替换操作。使用正则表达式在某些简单的环境下可能效率不高，因此如何更好的使用PHP正则表达式需要综合考虑。 我的PHP正则入门，是</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <p>
+	&nbsp;</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PHP正则表达式主要用于字符串的模式分割、匹配、查找及替换操作。使用正则表达式在某些简单的环境下可能效率不高，因此如何更好的使用PHP正则表达式需要综合考虑。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	我的PHP正则入门，是起源于网上的一篇文章，这篇文章由浅入深的阐述了PHP正则表达式使用的方法，我觉得是一个很好的入门材料，不过学成还是要 靠个人，在使用的过程中，还是会不断地忘记，因此反反复复的阅读了这篇文章有四五遍，对于其中一些比较困难的知识点，甚至要用很久才能消化，但是只要能见 坚持着看完，你会发现自己对于正则的运用能力就会显著提高。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PHP正则表达式的定义：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PHP中的正则函数：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PHP中有两套正则函数，两者功能差不多，分别为：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	一套是由PCRE（Perl Compatible Regular Expression）库提供的。使用&ldquo;preg_&rdquo;为前缀命名的函数；</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	一套由POSIX（Portable Operating System Interface of Unix ）扩展提供的。使用以&ldquo;ereg_&rdquo;为前缀命名的函数；（POSIX的正则函数库，自PHP 5.3以后，就不在推荐使用，从PHP6以后，就将被移除）</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	由于POSIX正则即将推出历史舞台，并且PCRE和perl的形式差不多，更利于我们在perl和php之间切换，所以这里重点介绍PCRE正则的使用。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PCRE正则表达式</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PCRE全称为Perl Compatible Regular Expression，意思是Perl兼容正则表达式。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	在PCRE中，通常将模式表达式（即正则表达式）包含在两个反斜线&ldquo;/&rdquo;之间，如&ldquo;/apple/&rdquo;。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	正则中重要的几个概念有：元字符、转义、模式单元（重复）、反义、引用和断言，这些概念都可以在文章[1]中轻松的理解和掌握。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	常用的元字符(Meta-character)：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	元字符&nbsp;&nbsp;&nbsp;&nbsp; 说明</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 匹配字符串串首的原子</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 匹配字符串串尾的原子</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 匹配单词的边界&nbsp;&nbsp;&nbsp;&nbsp; /\bis/&nbsp;&nbsp; 匹配头为is的字符串&nbsp;&nbsp; /is\b/&nbsp;&nbsp; 匹配尾为is的字符串&nbsp;&nbsp; /\bis\b/ 定界</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 匹配除单词边界之外的任意字符&nbsp;&nbsp; /\Bis/&nbsp;&nbsp; 匹配单词&ldquo;This&rdquo;中的&ldquo;is&rdquo;</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\d&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个数字；等价于[0-9]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\D&nbsp;&nbsp;&nbsp;&nbsp; 匹配除数字以外任何一个字符；等价于[^0-9]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\w&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个英文字母、数字或下划线；等价于[0-9a-zA-Z_]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\W&nbsp;&nbsp;&nbsp;&nbsp; 匹配除英文字母、数字和下划线以外任何一个字符；等价于[^0-9a-zA-Z_]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\s&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个空白字符；等价于[\f\t\v]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\S&nbsp;&nbsp;&nbsp;&nbsp; 匹配除空白字符以外任何一个字符；等价于[^\f\t\v]</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\f&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个换页符等价于 \x0c 或 \cL</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	匹配一个换行符；等价于 \x0a 或 \cJ</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	匹配一个回车符等价于\x0d 或 \cM</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\t&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个制表符；等价于 \x09\或\cl</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\v&nbsp;&nbsp;&nbsp;&nbsp; 匹配一个垂直制表符；等价于\x0b或\ck</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\oNN&nbsp;&nbsp; 匹配一个八进制数字</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\xNN&nbsp;&nbsp; 匹配一个十六进制数字</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	\cC&nbsp;&nbsp;&nbsp; 匹配一个控制字符</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	模式修正符（Pattern Modifiers）：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	模式修正符在忽略大小写、匹配多行中使用特别多，掌握了这一个修正符，往往能解决我们遇到的很多问题。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	i&nbsp;&nbsp;&nbsp;&nbsp; －可同时匹配大小写字母</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	M&nbsp;&nbsp;&nbsp;&nbsp; －将字符串视为多行</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	S&nbsp;&nbsp;&nbsp;&nbsp; －将字符串视为单行，换行符做普通字符看待，使&ldquo;.&rdquo;匹配任何字符</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	X&nbsp;&nbsp;&nbsp;&nbsp; －模式中的空白忽略不计&nbsp;&nbsp;</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	U&nbsp;&nbsp;&nbsp;&nbsp; －匹配到最近的字符串</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	e&nbsp;&nbsp;&nbsp;&nbsp; －将替换的字符串作为表达使用</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	格式：/apple/i匹配&ldquo;apple&rdquo;或&ldquo;Apple&rdquo;等，忽略大小写。&nbsp;&nbsp;&nbsp;&nbsp; /i</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PCRE的模式单元：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	//1 提取第一位的属性</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	/^\d{2} ([\W])\d{2}\\1\d{4}$匹配&ldquo;12-31-2006&rdquo;、&ldquo;09/27/1996&rdquo;、&ldquo;86 01 4321&rdquo;等字符串。但上述正则表达式不匹配&ldquo;12/34-5678&rdquo;的格式。这是因为模式&ldquo;[\W]&rdquo;的结果&ldquo;/&rdquo;已经被存储。下个位置&ldquo;\1&rdquo;引用 时，其匹配模式也是字符&ldquo;/&rdquo;。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	当不需要存储匹配结果时使用非存储模式单元&ldquo;（？：）&rdquo;</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	例如/(?:a|b|c)(D|E|F)\\1g/ 将匹配&ldquo;aEEg&rdquo;。在一些正则表达式中，使用非存储模式单元是必要的。否则，需要改变其后引用的顺序。上例还可以写成/（a|b|c）(C|E|F)\2g/。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	PCRE正则表达式函数：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	<font color="#ff0000">以下为引用的内容：</font></p>
+<div>
+	<ol style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; ">
+		<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+			<span><span>preg_match()和preg_match_all() &nbsp;</span></span></li>
+		<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+			<span>preg_quote() &nbsp;</span></li>
+		<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+			<span>preg_split() &nbsp;</span></li>
+		<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+			<span>preg_grep() &nbsp;</span></li>
+		<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+			<span>preg_replace()</span></li>
+	</ol>
+</div>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	函数的具体使用，我们可以通过PHP手册来找到，下面分享一些平时积累的正则表达式：</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	匹配action属性</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	&nbsp;</p>
+<table align="center" border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 153, 204); border-right-color: rgb(0, 153, 204); border-bottom-color: rgb(0, 153, 204); border-left-color: rgb(0, 153, 204); table-layout: fixed; " width="95%">
+	<tbody>
+		<tr>
+			<td bgcolor="#ddedfb" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; word-wrap: break-word; ">
+				<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+					<font color="#ff0000">以下为引用的内容：</font></p>
+				<div>
+					<ol style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; ">
+						<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+							<span><span class="vars"><font color="#dd0000">$str</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;&#39;</font></span><span>; &nbsp;</span></span></li>
+						<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;&#39;</font></span><span>; &nbsp;</span></li>
+						<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;preg_match_all(</span><span class="string"><font color="#0000ff">&#39;/\s+action=\&quot;(?!http:)(.*?)\&quot;\s/&#39;</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>); &nbsp;</span></li>
+						<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;print_r(</span><span class="vars"><font color="#dd0000">$match</font></span><span>);&nbsp;</span></li>
+					</ol>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	在正则中使用回调函数</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	&nbsp;</p>
+<table align="center" border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 153, 204); border-right-color: rgb(0, 153, 204); border-bottom-color: rgb(0, 153, 204); border-left-color: rgb(0, 153, 204); table-layout: fixed; " width="95%">
+	<tbody>
+		<tr>
+			<td bgcolor="#ddedfb" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; word-wrap: break-word; ">
+				<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+					<font color="#ff0000">以下为引用的内容：</font></p>
+				<ol class="dp-c" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; ">
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="comment"><font color="#008200">/**&nbsp;</font></span>&nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="comment"><font color="#008200">&nbsp;&nbsp;&nbsp;*&nbsp;replace&nbsp;some&nbsp;string&nbsp;by&nbsp;callback&nbsp;function&nbsp;</font></span>&nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="comment"><font color="#008200">&nbsp;&nbsp;&nbsp;*&nbsp;</font></span>&nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="comment"><font color="#008200">&nbsp;&nbsp;&nbsp;*/</font></span><span>&nbsp;</span></span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;</span><span class="keyword"><strong><font color="#006699">function</font></strong></span><span>&nbsp;callback_replace()&nbsp;{ &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars"><font color="#dd0000">$url</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;http://esfang.house.sina.com.cn&#39;</font></span><span>; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;&#39;</font></span><span>; &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>&nbsp;=&nbsp;preg_replace&nbsp;(&nbsp;</span><span class="string"><font color="#0000ff">&#39;/(?&lt;=\saction=\&quot;)(?!http:)(.*?)(?=\&quot;\s)/e&#39;</font></span><span>,&nbsp;</span><span class="string"><font color="#0000ff">&#39;search(\$url,&nbsp;\\1)&#39;</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>&nbsp;); &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="func">echo</span><span>&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;} &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;</span><span class="keyword"><strong><font color="#006699">function</font></strong></span><span>&nbsp;search(</span><span class="vars"><font color="#dd0000">$url</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>){ &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword"><strong><font color="#006699">return</font></strong></span><span>&nbsp;</span><span class="vars"><font color="#dd0000">$url</font></span><span>&nbsp;.&nbsp;</span><span class="string"><font color="#0000ff">&#39;/&#39;</font></span><span>&nbsp;.&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;}&nbsp;</span></li>
+				</ol>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	带断言的正则匹配</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	&nbsp;</p>
+<table align="center" border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 153, 204); border-right-color: rgb(0, 153, 204); border-bottom-color: rgb(0, 153, 204); border-left-color: rgb(0, 153, 204); table-layout: fixed; " width="95%">
+	<tbody>
+		<tr>
+			<td bgcolor="#ddedfb" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; word-wrap: break-word; ">
+				<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+					<font color="#ff0000">以下为引用的内容：</font></p>
+				<ol class="dp-c" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; ">
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="vars"><font color="#dd0000">$match</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;&#39;</font></span><span>; &nbsp;</span></span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>&nbsp;=&nbsp;</span><span class="string"><font color="#0000ff">&#39;xxxxxx.com.cn&nbsp;<strong>bold&nbsp;font</strong>&nbsp; </font></span>
+						<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+							<span class="string"><font color="#0000ff">paragraph&nbsp;text</font></span></p>
+						<span class="string"><font color="#0000ff">&#39;</font></span><span>; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;preg_match_all&nbsp;(&nbsp;</span><span class="string"><font color="#0000ff">&#39;/(?&lt;=&lt;(\w{1})&gt;).*(?=&lt;\/\1&gt;)/&#39;</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$str</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>&nbsp;); &nbsp;</span></li>
+					<li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;</span><span class="func">echo</span><span>&nbsp;</span><span class="string"><font color="#0000ff">&quot;匹配没有属性的HTML标签中的内容：&quot;</font></span><span>; &nbsp;</span></li>
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span>&nbsp;&nbsp;&nbsp;print_r&nbsp;(&nbsp;</span><span class="vars"><font color="#dd0000">$match</font></span><span>&nbsp;);&nbsp;</span></li>
+				</ol>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	替换HTML源码中的地址</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	&nbsp;</p>
+<table align="center" border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 153, 204); border-right-color: rgb(0, 153, 204); border-bottom-color: rgb(0, 153, 204); border-left-color: rgb(0, 153, 204); table-layout: fixed; " width="95%">
+	<tbody>
+		<tr>
+			<td bgcolor="#ddedfb" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; word-wrap: break-word; ">
+				<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+					<font color="#ff0000">以下为引用的内容：</font></p>
+				<ol style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; ">
+					<li class="alt" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+						<span><span class="vars"><font color="#dd0000">$form_html</font></span><span>&nbsp;=&nbsp;preg_replace&nbsp;(&nbsp;</span><span class="string"><font color="#0000ff">&#39;/(?&lt;=\saction=\&quot;|\ssrc=\&quot;|\shref=\&quot;)(?!http:|javaｓｃｒｉｐｔ)(.*?)(?=\&quot;\s)/e&#39;</font></span><span>,&nbsp;</span><span class="string"><font color="#0000ff">&#39;add_url(\$url,&nbsp;\&#39;\\1\&#39;)&#39;</font></span><span>,&nbsp;</span><span class="vars"><font color="#dd0000">$form_html</font></span><span>&nbsp;);&nbsp;</span></span></li>
+				</ol>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	最后，正则工具虽然强大，但是从效率和编写时间上来讲，有的时候可能没有explode来的更直接，对于一些紧急或者要求不高的任务，简单、粗暴的方法也许更好。</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+	而对于preg和ereg两个系列之间的执行效率，曾看到文章说preg要更快一点，具体由于使用ereg的时候并不多，而且也要推出历史舞台了，再加个个人更偏好于PCRE的方式，所以笔者就不做比较了，熟悉的朋友可以发表下意见，谢谢。</p>
+<p>
+	&nbsp;</p>
+
+      
+      (责任编辑：沙羡)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',107)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',107)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(107);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/gh/a/webbase/javascript-ajax/2010/0407/53.html'>用Mozilla免费调试器调试JavaScript</a> </li>
+     <li>下一篇：没有了 </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/gh/plus/stow.php?aid=107" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/gh/plus/erraddsave.php?aid=107&title=PHP正则表达式的几则使用技巧" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/gh/plus/recommend.php?aid=107" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ 
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> <div class="infos_userinfo">
+  <dl class="tbox light">
+   <dt class='light'><strong>发布者资料</strong></dt>
+   <dd class='light'> <a href="http://localhost/member/index.php?uid=like" class="userface"><img src="/gh/member/templets/images/dfboy.png" width="52" height="52" /></a> <a href='http://localhost/member/index.php?uid=like' class="username">like</a> <span class="useract"> <a href="http://localhost/member/index.php?uid=like" class="useract-vi">查看详细资料</a> <a href="http://localhost/member/index.php?uid=like&action=guestbook" class="useract-pm">发送留言</a> <a href="http://localhost/member/index.php?uid=like&action=newfriend" class="useract-af">加为好友</a> </span> <span class="userinfo-sp"><small>用户等级:</small>注册会员</span> <span class="userinfo-sp"><small>注册时间:</small>2010-04-07 15:04</span> <span class="userinfo-sp"><small>最后登录:</small>2010-04-07 15:04</span> </dd>
+  </dl>
+ </div>
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href='/gh/a/webbase/html/'>HTML</a></li>
+      
+      <li><a href='/gh/a/webbase/div-css/'>DIV&CSS</a></li>
+      <li><a href='/gh/a/webbase/javascript-ajax/' class='thisclass'>Javascript/Ajax</a></li>
+      <li><a href='/gh/a/webbase/dreamweaver/'>Dreamweaver</a></li>
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/gh/a/webbase/javascript-ajax/2010/0409/107.html">PHP正则表达式的几则使用技巧</a>
+       <p>PHP正则表达式主要用于字符串的模式分割、匹配、查找及替换操...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/35.html">用JavaScript的日期对象操控时间和日</a>
+       <p>软件开发中一个比较棘手的内容是使用时间和日期值；似乎每种...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/43.html">JavaScript的9个陷阱及评点</a>
+       <p>来自Nine Javascript Gotchas, 以下是JavaScript容易犯错的九个陷阱。虽...</p>
+      </li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/52.html">完全了解AJAX</a>
+       <p>尽管AJAX是个相对新生的术语，但其背后的技术却并不新颖。我们...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/gh/a/webbase/javascript-ajax/2010/0407/39.html">Web2.0十大Ajax安全漏洞以及</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/34.html">JavaScript风格要素</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/35.html">用JavaScript的日期对象操控</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/36.html">减轻JavaScript测试和调试负</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/37.html">使用AJAX技术的十大理由</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/38.html">Ajax 技术入门简介</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/40.html">JavaScript开发时的五个小提</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/41.html">JavaScript：世界上误解最深</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/42.html">JavaScript基础知识总结</a></li>
+<li><a href="/gh/a/webbase/javascript-ajax/2010/0407/43.html">JavaScript的9个陷阱及评点</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>
