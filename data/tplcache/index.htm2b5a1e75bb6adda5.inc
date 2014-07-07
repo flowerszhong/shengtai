@@ -24,7 +24,7 @@ $z[10][4]['filename']="head.htm";
 $z[11]=Array("include","",1602,1639);
 $z[11][4]['filename']="slider.htm";
 $z[12]=Array("channelartlist","\r\n    <dl class=\"tbox light\">\r\n      <dt>\r\n        <strong><a href=\"{dede:field name='typeurl'/}\">{dede:field name='typename'/}</a></strong> \r\n        <span class=\"more\">\r\n          <a href=\"{dede:field name='typeurl'/}\">更多...</a>\r\n        </span>\r\n      </dt>\r\n      <dd class='light'>\r\n        <ul class=\"d1 ico3\">\r\n          {dede:arclist titlelen='60' row='8'}\r\n          <li>\r\n            <span>[field:pubdate function=\"MyDate('m-d',@me)\"/]</span>\r\n            <a href=\"[field:arcurl /]\">[field:title /]</a>\r\n          </li>\r\n          {/dede:arclist}\r\n        </ul>\r\n      </dd>\r\n    </dl>\r\n    ",1678,2344);
-$z[12][4]['typeid']="17,18,19";
+$z[12][4]['typeid']="26,27,28";
 $z[13]=Array("arclist","\r\n                    <li>\r\n                      <a href=\"[field:arcurl/]\">\r\n                        [field:image/]\r\n                        <span class=\"title\">[field:title/]</span>\r\n                      </a>\r\n                    </li>\r\n                    ",2746,3103);
 $z[13][4]['row']="10";
 $z[13][4]['orderby']="pubdate";

@@ -4,19 +4,22 @@ $cfg_dbhost = 'localhost';
 // $cfg_dbname = 'ghdb';
 // $cfg_dbname = 'test';
 
-$cfg_dbhost = 'localhost';
+
+//local for home
+// $cfg_dbname = 'stdb';
+// $cfg_dbuser = 'root';
+// $cfg_dbpwd = 'mzhong1986';
+// $cfg_dbprefix = 'st_';
+// $cfg_db_language = 'utf8';
+
+
+
+//local for office
 $cfg_dbname = 'stdb';
 $cfg_dbuser = 'root';
-$cfg_dbpwd = 'mzhong1986';
+$cfg_dbpwd = 'Zyh1986';
 $cfg_dbprefix = 'st_';
 $cfg_db_language = 'utf8';
-
-
-
-
-
-
-
 
 
 // $cfg_dbname = 'db_gonghui';

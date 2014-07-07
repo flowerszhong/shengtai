@@ -1,5 +1,5 @@
 <?php
-$z[0]=Array("body","	\n",0,156);
+$z[0]=Array("body","	\r\n",0,157);
 $z[0][4]['itemname']="文章内容";
 $z[0][4]['autofield']="0";
 $z[0][4]['notsend']="0";

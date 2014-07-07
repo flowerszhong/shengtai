@@ -7,50 +7,20 @@
 <meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
 <link href="{dede:global.cfg_templets_skin/}/style/st-main.css" rel="stylesheet" media="screen" type="text/css" />
 </head>
-<body class="articlelist">
+<body class="channel">
+<div class="body-wrap">
 {dede:include filename="head.htm"/}
 <!-- /header -->
 <div class="w960 center clear mt1">
- <div class="pleft">
-  <div class="place"> <strong>当前位置:</strong> {dede:field name='position'/} </div>
-  <!-- /place -->
-  <div class="listbox">
-   <ul class="e2">
-    {dede:list pagesize='10'}
-    <li> 
-     <a href="[field:arcurl/]" class="title">[field:title/]</a>  <b>[field:pubdate function="GetDateTimeMK(@me)"/]</b>
-    </li>
-    {/dede:list}
-   </ul>
-  </div>
-  <!-- /listbox -->
-  <div class="dede_pages">
-   <ul class="pagelist">
-    {dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
-   </ul>
-  </div>
-  <!-- /pages -->
- </div>
- <!-- /pleft -->
- <div class="pright">
-  <!-- <div class="commend">
+<div class="sidebar">
+  <ul class="sidebar-nav">
+    {dede:channelartlist}
+    <li><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></li>
+    {/dede:channelartlist} 
+  </ul>
+
+  <div class="hot mt1">
    <dl class="tbox light">
-    <dt class='light'><strong>栏目列表</strong></dt>
-    <dd class='light'>
-     <ul class="d6">
-      {dede:channel type='son' currentstyle="
-      <li><a href='~typelink~' class='thisclass'>~typename~</a></li>
-      "}
-      <li><a href='[field:typeurl/]'>[field:typename/]</a></li>
-      {/dede:channel}
-     </ul>
-    </dd>
-   </dl>
-  </div> -->
-  
-  <!-- /commend -->
-  <div class="hot mt1 light">
-   <dl class="tbox">
     <dt class='light'><strong>热点内容</strong></dt>
     <dd class='light'>
      <ul class="c1 ico2">
@@ -61,23 +31,15 @@
     </dd>
    </dl>
   </div>
-  <!-- <div class="commend">
-   <dl class="tbox light">
-    <dt class='light'><strong>推荐内容</strong></dt>
-    <dd class='light'>
-     <ul class="d4">
-      {dede:arclist flag='c' titlelen=42 row=6}
-      <li><a href="[field:arcurl/]">[field:title/]</a>
-       <p>[field:description function='cn_substr(@me,80)'/]...</p>
-      </li>
-      {/dede:arclist}
-     </ul>
-    </dd>
-   </dl>
-  </div> -->
-  
- </div>
- <!-- /pright -->
+</div>
+
+<div class="center-main">
+  <div class="place"> <strong>当前位置:</strong> {dede:field name='position'/} </div>
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
 </div>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmspath/}/images/js/j.js" ></script>
 {dede:include filename="footer.htm"/}
