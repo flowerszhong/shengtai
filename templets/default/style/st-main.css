@@ -275,11 +275,10 @@ input,select,button{
     font:14px/1.5 "Microsoft YaHei","微软雅黑","Microsoft JhengHei","宋体";
 	float:left;	
 	height: 22px;
-	margin-right: 8px;
-	margin-left: -3px;
-	padding-right: 8px;
-	padding-left: 8px;
 	border-right: 1px solid #fff;
+
+	width:129px;
+	text-align: center;
 }
 
 #navMenu ul li:hover{
@@ -342,10 +341,9 @@ input,select,button{
 	cursor:pointer;
 	display:inline-block;
 	height:22px;
-    color:#DEFF01;
+    color:#DF8E33;
 	line-height:20px;
-	margin:0 0 0 5px;
-	padding:0 5px 0 0;
+	width:60px;
 	text-align:center;
 	vertical-align:middle;
 }
@@ -477,7 +475,6 @@ input,select,button{
 /*pic scroll
 ----------------------------------*/
 .infiniteCarousel {
-  width: 700px;
   position: relative;
   margin-left:auto;
   margin-right:auto;
@@ -658,8 +655,7 @@ input,select,button{
 /* center-main */
 .center-main{
 	float: left;
-	width:610px;
-	border: 1px solid red;
+	width:700px;
 }
 
 
@@ -680,7 +676,7 @@ input,select,button{
 .sidebar  ul {
   padding:4px 8px;
  }
-.sidebar  ul li{
+.sidebar ul li{
 	height: 25px;
 	margin-top: 2px;
 	padding: 5px 0px 5px 10px;
@@ -688,6 +684,21 @@ input,select,button{
   line-height:24px;
   background:url(../images/grade_10.gif) right center no-repeat;
  }
+
+ .sidebar ul li a{
+ 	margin-left: 20px;
+ }
+
+
+.sidebar  ul li.hover, .sidebar  ul li:hover{
+  background:url(../images/grade_11.gif) right center no-repeat;
+}
+
+.sidebar ul li.hover a,.sidebar ul li:hover a{
+  color: #04993B;
+  font-weight: bold;
+}
+
 .resultlist{
   overflow:hidden;
 }
@@ -729,9 +740,10 @@ input,select,button{
 	position:absolute;
 	top: 0;
 	z-index:100;
-	width: 120px;
+	width: 130px;
+	margin-left: -32px;
 	visibility: hidden;
-	margin-top: 10px;
+	margin-top: 2px;
 	border: 1px solid #316301;
 	background-color: #fff;
 	padding-top:6px;
@@ -742,13 +754,13 @@ input,select,button{
 	text-align: left;
 	margin-top:2px;
 	margin-bottom:4px;
-	padding-left:3px;
 }
 .dropMenu a {
 	width: auto;
 	display: block;
 	color: #316301;
-	padding: 2px 0 2px 1.2em;
+	padding: 3px 0 3px 0;
+	text-align: center;
 }
 * html .dropMenu a {
 	width: 100%;
@@ -756,4 +768,19 @@ input,select,button{
 .dropMenu a:hover {
 	color:red;
 	text-decoration: underline;
+}
+
+
+
+/* article list */
+.article-list{
+    
+}
+
+
+
+.channel-banner{
+	width:680px;
+	height: 120px;
+	background: url('../images/jlhz.jpg') 0 0 no-repeat;
 }

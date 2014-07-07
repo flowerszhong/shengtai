@@ -13,12 +13,16 @@
 <!-- /header -->
 <div class="w960 center clear mt1">
 <div class="sidebar">
-  <ul class="sidebar-nav">
-    {dede:channelartlist type='top' typeid="10"}
-    <li><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></li>
-    {/dede:channelartlist} 
+  <ul class="sidebar-nav" test="{dede:field name='reid'/}">
+
+    {dede:channel currentstyle="<li class='hover'><a href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
+    <li [field:rel/]><a href='[field:typeurl/]' [field:rel/]><span>[field:typename/]</span></a></li>
+    {/dede:channel}
+
   </ul>
 
+
+  
   <div class="hot mt1">
    <dl class="tbox light">
     <dt class='light'><strong>热点内容</strong></dt>

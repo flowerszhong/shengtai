@@ -14,15 +14,14 @@ $z[5]=Array("global","",509,541);
 $z[5][4]['name']="cfg_templets_skin";
 $z[6]=Array("include","",671,706);
 $z[6][4]['filename']="head.htm";
-$z[7]=Array("channelartlist","\r\n    <li><a href=\"{dede:field name='typeurl'/}\">{dede:field name='typename'/}</a></li>\r\n    ",818,954);
-$z[8]=Array("arclist","\r\n      <li><a href=\"[field:arcurl/]\">[field:title/]</a></li>\r\n      ",1136,1255);
-$z[8][4]['row']="10";
-$z[8][4]['orderby']="click";
-$z[9]=Array("field","",1390,1419);
-$z[9][4]['name']="position";
-$z[10]=Array("global","",1547,1573);
+$z[7]=Array("channel","\r\n    <li [field:rel/]><a href='[field:typeurl/]' [field:rel/]><span>[field:typename/]</span></a></li>\r\n    ",818,1048);
+$z[7][4]['currentstyle']="<li class='hover'><a href='~typelink~' ~rel~><span>~typename~</span></a></li>";
+$z[8]=Array("field","",1149,1178);
+$z[8][4]['name']="position";
+$z[9]=Array("type","[field:reid/]",1227,1263);
+$z[10]=Array("global","",1406,1432);
 $z[10][4]['name']="cfg_cmspath";
-$z[11]=Array("include","",1602,1639);
+$z[11]=Array("include","",1461,1498);
 $z[11][4]['filename']="footer.htm";
 
 ?>

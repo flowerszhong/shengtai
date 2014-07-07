@@ -23,7 +23,7 @@ $z[10]=Array("global","",1441,1466);
 $z[10][4]['name']="cfg_cmsurl";
 $z[11]=Array("channel","\r\n        <li [field:rel/]><a href='[field:typeurl/]' [field:rel/]><span>[field:typename/]</span></a></li>\r\n        ",1516,1774);
 $z[11][4]['type']="top";
-$z[11][4]['row']="9";
+$z[11][4]['row']="5";
 $z[11][4]['currentstyle']="<li class='hover'><a href='~typelink~' ~rel~><span>~typename~</span></a></li>";
 $z[12]=Array("global","",1871,1896);
 $z[12][4]['name']="cfg_cmsurl";

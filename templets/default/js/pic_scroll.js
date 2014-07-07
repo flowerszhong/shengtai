@@ -84,13 +84,13 @@
 
 $(document).ready(function () {
     // THIS IS NEW CODE FOR THE AUTOMATIC INFINITE CAROUSEL
-    var autoscrolling = true;
+    var autoscrolling = false;
     if($('#imgscroll > li').length>0)
     {
         $('.infiniteCarousel').infiniteCarousel().mouseover(function () {
             autoscrolling = false;
         }).mouseout(function () {
-            autoscrolling = true;
+            autoscrolling = false;
         });
         setInterval(function () {
             if (autoscrolling) {
