@@ -26,7 +26,7 @@ $z[11][4]['listitem']="info,index,end,pre,next,pageno";
 $z[11][4]['listsize']="5";
 $z[12]=Array("global","",1833,1859);
 $z[12][4]['name']="cfg_cmspath";
-$z[13]=Array("include","",1888,1925);
+$z[13]=Array("include","",1893,1930);
 $z[13][4]['filename']="footer.htm";
 
 ?>
