@@ -29,4 +29,10 @@ $cfg_Cs[25]=array(22,1,1,'5L2c5ZOB5bGV56S6');
 $cfg_Cs[26]=array(0,1,1,'57O76YOo6KaB6Ze7');
 $cfg_Cs[27]=array(0,1,1,'6YCa55+l5YWs5ZGK');
 $cfg_Cs[28]=array(0,1,1,'5a2m55Sf5rS75Yqo');
+$cfg_Cs[29]=array(0,1,1,'5LiL6L295Lit5b+D');
+$cfg_Cs[30]=array(29,1,1,'5pWZ5a2m6LWE5rqQ');
+$cfg_Cs[31]=array(29,1,1,'5pWZ5biI6KGo5qC8');
+$cfg_Cs[32]=array(29,1,1,'5a2m55Sf6KGo5qC8');
+$cfg_Cs[33]=array(29,1,1,'57O75YiK');
+$cfg_Cs[34]=array(29,1,1,'5paw55Sf5oyH5Y2X');
 ?>

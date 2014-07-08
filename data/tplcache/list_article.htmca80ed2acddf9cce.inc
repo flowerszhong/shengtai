@@ -19,14 +19,14 @@ $z[7][4]['currentstyle']="<li class='hover'><a href='~typelink~' ~rel~><span>~ty
 $z[8]=Array("field","",1143,1172);
 $z[8][4]['name']="position";
 $z[9]=Array("type","[field:reid/]",1221,1257);
-$z[10]=Array("list","\r\n    <li> \r\n     <a href=\"[field:arcurl/]\" class=\"title\">[field:title/]</a>  <b>[field:pubdate function=\"GetDateMK(@me)\"/]</b>\r\n    </li>\r\n    ",1335,1515);
+$z[10]=Array("list","\r\n    <li> \r\n     <b>[field:pubdate function=\"GetDateMK(@me)\"/]</b>\r\n     <a href=\"[field:arcurl/]\" class=\"title\">[field:title/]</a>  \r\n    </li>\r\n    ",1335,1522);
 $z[10][4]['pagesize']="5";
-$z[11]=Array("pagelist","",1605,1676);
+$z[11]=Array("pagelist","",1612,1683);
 $z[11][4]['listitem']="info,index,end,pre,next,pageno";
 $z[11][4]['listsize']="5";
-$z[12]=Array("global","",1833,1859);
+$z[12]=Array("global","",1840,1866);
 $z[12][4]['name']="cfg_cmspath";
-$z[13]=Array("include","",1893,1930);
+$z[13]=Array("include","",1900,1937);
 $z[13][4]['filename']="footer.htm";
 
 ?>

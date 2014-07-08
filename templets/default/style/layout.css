@@ -302,36 +302,20 @@ dt.light strong{
 }*/
 
 .e2 li{
+	height: 30px;
 	overflow:hidden;
 	clear:both;
-	padding:0px 0 5px 12px;
+	padding:0 0 0 12px;
 	border-bottom:1px solid #EEE;
 	color:#aaa;
-	list-style-type:circle;
 	background: url(../images/icon_book1.gif) left center no-repeat;
+	+background: url(../images/icon_book1.gif) 0 5px no-repeat;
 }
 
 .e2 li b a{
 	color:#333;
 }
-.e2 li a.preview{
-	width:84px;
-	float:left;
-	margin-right:7px;
-	margin-bottom:3px;
-	margin-left:10px;
-	display:inline;
-}
-.e2 li a.preview img{
-	width:80px;
-	/*height:60px;*/
-	display:block;
-	padding:1px;
-	border:1px solid #EEE;
-}
-.e2 li a.preview:hover img{
-	border:1px solid #AAA;
-}
+
 .e2 li a.title{
 	overflow:hidden;
 	line-height:25px;
