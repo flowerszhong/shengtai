@@ -6,7 +6,7 @@ $(function () {
 		$navMenu.find('li.hover').addClass('has-child');
 	}
 
-	$navMenu.on('mouseover','li',function () {
+	$navMenu.on('mouseenter','li',function () {
 		var $this = $(this);
 
 		$('.dropMenu.down').hide().removeClass('down');
@@ -19,6 +19,10 @@ $(function () {
 				"left" : offset.left + "px"
 			}).addClass('down').slideDown("slow");
 		}
+	});
+
+	$('.dropMenu').on('mouseleave',function () {
+		$(this).slideUp();
 	});
 
 });

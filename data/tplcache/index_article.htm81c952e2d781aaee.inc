@@ -21,7 +21,7 @@ $z[8][4]['name']="position";
 $z[9]=Array("type","[field:reid/]",1227,1263);
 $z[10]=Array("global","",1406,1432);
 $z[10][4]['name']="cfg_cmspath";
-$z[11]=Array("include","",1461,1498);
+$z[11]=Array("include","",1466,1503);
 $z[11][4]['filename']="footer.htm";
 
 ?>

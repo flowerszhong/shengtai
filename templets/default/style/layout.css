@@ -189,11 +189,11 @@ dt.light strong{
 }
 .d1 li span{
 	color:#ABA9A2;
-	margin-right:5px;
-	float:left;
+	margin-left:5px;
+	float:right;
 }
 .d1 li a{
-	
+	float:left;
 }
 .d2{/* 后置时间日期的小列表 */
 	padding:4px 0px;

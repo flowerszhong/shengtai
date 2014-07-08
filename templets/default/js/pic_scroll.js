@@ -15,6 +15,7 @@
                 singleWidth = $single.outerWidth(),
                 visible = Math.ceil($wrapper.innerWidth() / singleWidth),
                 currentPage = 1,
+                // pages = Math.ceil($items.length / visible);
                 pages = Math.ceil($items.length / visible);
                 
             /* TASKS */
