@@ -23,19 +23,15 @@ $z[10]=Array("include","",1513,1548);
 $z[10][4]['filename']="head.htm";
 $z[11]=Array("include","",1607,1644);
 $z[11][4]['filename']="slider.htm";
-$z[12]=Array("channelartlist","\r\n    <dl class=\"tbox light\">\r\n      <dt>\r\n        <strong><a href=\"{dede:field name='typeurl'/}\">{dede:field name='typename'/}</a></strong> \r\n        <span class=\"more\">\r\n          <a href=\"{dede:field name='typeurl'/}\">更多...</a>\r\n        </span>\r\n      </dt>\r\n      <dd class='light'>\r\n        <ul class=\"d1 ico3\">\r\n          {dede:arclist titlelen='40' row='6'}\r\n          <li>\r\n            <a href=\"[field:arcurl /]\">[field:title /]</a>\r\n            <span>[[field:pubdate function=\"MyDate('m-d',@me)\"/]]</span>\r\n          </li>\r\n          {/dede:arclist}\r\n        </ul>\r\n      </dd>\r\n    </dl>\r\n    ",1683,2351);
+$z[12]=Array("channelartlist","\r\n    <dl class=\"tbox light\">\r\n      <dt>\r\n        <strong><a href=\"{dede:field name='typeurl'/}\">&#9830;{dede:field name='typename'/}&#9830;</a></strong> \r\n        <span class=\"more\">\r\n          <a href=\"{dede:field name='typeurl'/}\">更多...</a>\r\n        </span>\r\n      </dt>\r\n      <dd class='light'>\r\n        <ul class=\"d1 ico3\">\r\n          {dede:arclist titlelen='40' row='6'}\r\n          <li>\r\n            <a href=\"[field:arcurl /]\">[field:title /]</a>\r\n            <span>[[field:pubdate function=\"MyDate('m-d',@me)\"/]]</span>\r\n          </li>\r\n          {/dede:arclist}\r\n        </ul>\r\n      </dd>\r\n    </dl>\r\n    ",1683,2365);
 $z[12][4]['typeid']="26,27,28";
-$z[13]=Array("arclist","\r\n                    <li>\r\n                      <a href=\"[field:arcurl/]\">\r\n                        [field:image/]\r\n                        <span class=\"title\">[field:title/]</span>\r\n                      </a>\r\n                    </li>\r\n                    ",2672,3028);
+$z[13]=Array("arclist","\r\n                    <li>\r\n                      <a href=\"[field:arcurl/]\">\r\n                        [field:image/]\r\n                        <span class=\"title\">[field:title/]</span>\r\n                      </a>\r\n                    </li>\r\n                    ",2686,3042);
 $z[13][4]['row']="10";
 $z[13][4]['orderby']="pubdate";
 $z[13][4]['type']="image.";
 $z[13][4]['imgwidth']="100";
 $z[13][4]['imgheight']="60";
-$z[14]=Array("flinktype","\r\n        <a href=\"#\" _for=\"flink_[field:id/]\">[field:typename/]</a>\r\n        ",3385,3511);
-$z[14][4]['type']="dedecms";
-$z[15]=Array("flinktype","\r\n    <dd id=\"flink_[field:id/]\">\r\n      <ul class=\"f5\">{dede:flink/}</ul>\r\n    </dd>\r\n    ",3702,3841);
-$z[15][4]['type']="dedecms";
-$z[16]=Array("include","",3924,3961);
-$z[16][4]['filename']="footer.htm";
+$z[14]=Array("include","",3272,3309);
+$z[14][4]['filename']="footer.htm";
 
 ?>
