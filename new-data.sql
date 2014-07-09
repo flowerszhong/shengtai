@@ -239,10 +239,10 @@ CREATE TABLE `st_admin` (
 -- 导出表中的数据 `st_admin`
 -- 
 
-INSERT INTO `st_admin` VALUES (1, 10, 'admin', 'f297a57a5a743894a0e4', 'admin', '', '', '0', 1404789886, '127.0.0.1');
-INSERT INTO `st_admin` VALUES (7, 10, '尐湶細蓅', 'b6504a444bebd6bec875', '尐湶細蓅', '马修', 'wind@dedecms.com', '', 0, '');
-INSERT INTO `st_admin` VALUES (6, 10, 'admin1', '25ad42683b3df678c61f', '沙羡', 'admin1', 'wind@dedecms.com', '', 1401807127, '127.0.0.1');
-INSERT INTO `st_admin` VALUES (8, 10, 'admin2', 'b6504a444bebd6bec875', 'admin3-biming', '', 'flowerszhong@hotmail.com', '', 1404789414, '127.0.0.1');
+INSERT INTO `st_admin` VALUES (1, 10, 'admin', '1c0ec87d3b1bea6eb189', 'admin', '', '', '0', 1404789886, '127.0.0.1');
+INSERT INTO `st_admin` VALUES (2, 10, 'st-admin', '96cdb164a374c71f1efe', 'st-admin', '', '', '0', 1404789886, '127.0.0.1');
+INSERT INTO `st_admin` VALUES (3, 10, 'st-admin02', '2a4074960707ec556b17', 'st-admin02', '', 'flowerszhong@hotmail.com', '', 1404789414, '127.0.0.1');
+INSERT INTO `st_admin` VALUES (4, 10, 'adminthree', '659c9f3066025fe4619e', 'admin3', '', 'flowerszhong@hotmail.com', '', 1404789414, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -571,7 +571,7 @@ INSERT INTO `st_arctype` VALUES (7, 6, 6, 50, '通知公告', '{cmspath}/a/jiaox
 INSERT INTO `st_arctype` VALUES (8, 6, 6, 50, '教学新闻', '{cmspath}/a/jiaoxuejiaoyan/jiaoxuexinwen', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '{cmspath}/a/jiaoxuejiaoyan', '', 0, 0, '', '', '');
 INSERT INTO `st_arctype` VALUES (9, 6, 6, 50, '成果展示', '{cmspath}/a/jiaoxuejiaoyan/chengguozhanshi', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '{cmspath}/a/jiaoxuejiaoyan', '', 0, 0, '', '', '');
 INSERT INTO `st_arctype` VALUES (10, 0, 0, 3, '产学研', '{cmspath}/a/chanxueyan', 1, 'index.html', 1, 1, -1, 1, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '', '');
-INSERT INTO `st_arctype` VALUES (11, 10, 10, 50, '科研团队', '{cmspath}/a/chanxueyan/keyantuandui', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article_cxy.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '&nbsp;', '');
+INSERT INTO `st_arctype` VALUES (11, 10, 10, 50, '科研团队', '{cmspath}/a/chanxueyan/keyantuandui', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '&nbsp;', '');
 INSERT INTO `st_arctype` VALUES (12, 10, 10, 50, '科技政策', '{cmspath}/a/chanxueyan/kejizhengce', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '', '');
 INSERT INTO `st_arctype` VALUES (13, 10, 10, 50, '学术交流', '{cmspath}/a/chanxueyan/xueshujiaoliu', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '', '');
 INSERT INTO `st_arctype` VALUES (14, 10, 10, 50, '成果展示', '{cmspath}/a/chanxueyan/chengguozhanshi', 1, 'index.html', 1, 1, -1, 0, 0, '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{typedir}/{Y}/{M}{D}/{aid}.html', '{typedir}/list_{tid}_{page}.html', 'default', '', '', '', 0, '', '', 0, 0, '', '', '');
