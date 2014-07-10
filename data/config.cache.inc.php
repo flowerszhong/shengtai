@@ -9,12 +9,7 @@ $cfg_indexurl = '/shengtai';
 $cfg_basehost = 'http://localhost';
 
 //for live
-// $cfg_basehost = 'http://sthj.gdepc.cn';
-// $cfg_indexurl = '';
-// $cfg_cmspath = '';
-
-// for office
-// $cfg_basehost = 'http://sthj.gdepc.cn';
+// $cfg_basehost = 'http://stx.gdepc.cn';
 // $cfg_indexurl = '';
 // $cfg_cmspath = '';
 

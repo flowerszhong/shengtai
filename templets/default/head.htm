@@ -12,8 +12,9 @@
     	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
     <div id="navMenu">
     	<ul>
-      	<li><a href='{dede:global.cfg_cmsurl/}/'><span>生态系首页</span></a></li>
-        {dede:channel type='top'  row='5' currentstyle="<li ~rel~ class='hover'><a href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
+        <li><a href='http://www.gdepc.cn/'><span>学院首页</span></a></li>
+      	<li><a href='{dede:global.cfg_cmsurl/}/'><span>系部首页</span></a></li>
+        {dede:channel type='top' row='7' currentstyle="<li ~rel~ class='hover'><a href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
         <li [field:rel/]><a href='[field:typeurl/]' [field:rel/]><span>[field:typename/]</span></a></li>
         {/dede:channel}
     	</ul>

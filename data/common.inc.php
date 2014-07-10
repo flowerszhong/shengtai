@@ -21,11 +21,11 @@ $cfg_dbpwd = 'Zyh1986';
 $cfg_dbprefix = 'st_';
 $cfg_db_language = 'utf8';
 
-
-// $cfg_dbname = 'db_gonghui';
+//for live
+// $cfg_dbname = 'shengtaixi';
 // $cfg_dbuser = 'zyh';
 // $cfg_dbpwd = '123456';
-// $cfg_dbprefix = 'gh_';
+// $cfg_dbprefix = 'st_';
 // $cfg_db_language = 'utf8';
 
 

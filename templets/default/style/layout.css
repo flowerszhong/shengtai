@@ -27,14 +27,15 @@
 	position:relative;
 	line-height:25px;
 	padding-right:8px;
-	color:#596F37;
+	margin-top: 8px;
+	color:#ccc;
 }
 .tbox dt span.more a{
-	color:#596F37;
+	color:#ccc;
 	text-decoration:none;
 }
 .tbox dt span.more a:hover{
-	color:#ff3333;
+	color:#ccc;
 	text-decoration:underline;
 }
 .tbox dt span.label{
